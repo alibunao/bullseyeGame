@@ -8,18 +8,27 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        tableView.dataSource = self
+        tableView.delegate = self
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { // <-- how many cell are going to be used
+        return 10 / <-- call the function
     }
-
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // <-- what goes in each cel
+        let cell = UITableViewCell() // <- create a constant or var
+        cell.textLabel?.text = "Hello" // <-- assign the cell
+        return cell // <-- call the function
+    }
 }
-
